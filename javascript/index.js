@@ -7,7 +7,7 @@ function updateTime() {
 
     losAngelesDateElement.innerHTML = losAngelesTime.format("MMM Do YYYY");
     losAngelesTimeElement.innerHTML = losAngelesTime.format(
-      "h:mm:ss [<small>]A [<small>]"
+      "h:mm:ss [<small>]A [</small>]"
     );
   }
 
@@ -19,7 +19,18 @@ function updateTime() {
 
     parisDateElement.innerHTML = parisTime.format("MMM Do YYYY");
     parisTimeElement.innerHTML = parisTime.format(
-      "h:mm:ss [<small>]A[<small>]"
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+  let tokyoElement = document.querySelector("#tokyo");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".date");
+    let tokyoTimeElement = tokyoElement.querySelector(".time");
+    let tokyoTime = moment().tz("Asia/Tokyo");
+
+    tokyoDateElement.innerHTML = tokyoTime.format("MMM Do YYYY");
+    tokyoTimeElement.innerHTML = tokyoTime.format(
+      "h:mm:ss [<small>]A[</small>]"
     );
   }
 }
@@ -40,7 +51,9 @@ function updateCity(event) {
           <div class="time">${cityTime.format(
             "h:mm:ss"
           )} <small> ${cityTime.format("A")}</small></div>
-        </div>`;
+        </div>
+        <a href="/"> All cities </a>
+        `;
 }
 
 updateTime();
